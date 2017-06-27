@@ -20,12 +20,14 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include "Cell.h"
 
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd )
 {
+	init();
 }
 
 void Game::Go()
@@ -40,6 +42,39 @@ void Game::UpdateModel()
 {
 }
 
+
 void Game::ComposeFrame()
 {
+	drawGrid();
+}
+
+void Game::intialiseCells(int x, int y)
+{
+	cells[y][x].gridX = x;
+	cells[y][x].gridY = y;
+}
+
+void Game::init()
+{
+	for (int i = 0; i < rowNum; i++) {
+		for (int j = 0; j < colNum; j++) {
+			intialiseCells(j, i);
+		}
+	}
+}
+
+void Game::drawGrid()
+{
+	for (int i = 0; i < rowNum; i++) {
+		for (int j = 0; j < Graphics::ScreenWidth; j++) {
+			gfx.PutPixel(j, i * Cell::height, 255, 255, 255);
+		}
+	}
+
+
+	for (int i = 0; i < Graphics::ScreenHeight; i++) {
+		for (int j = 0; j < rowNum; j++) {
+			gfx.PutPixel(j * Cell::width, i, 255, 255, 255);
+		}
+	}
 }

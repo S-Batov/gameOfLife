@@ -23,6 +23,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Cell.h"
 
 class Game
 {
@@ -37,10 +38,19 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
+
+	void intialiseCells(int x, int y);
+	void init();
+	void drawGrid();
+
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
+	static constexpr int rowNum = int(Graphics::ScreenHeight / Cell::height);
+	static constexpr int colNum = int(Graphics::ScreenWidth / Cell::width);
+
+	Cell cells[rowNum][colNum];
 };
