@@ -1,4 +1,5 @@
 #pragma once
+#include "Graphics.h"
 
 class Cell {
 public:
@@ -11,5 +12,5 @@ public:
 	int gridY;
 
 public:
-
+	void show(int x, int y,	Graphics& gfx);
 };

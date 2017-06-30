@@ -70,8 +70,7 @@ void Game::drawGrid()
 			gfx.PutPixel(j, i * Cell::height, 255, 255, 255);
 		}
 	}
-
-
+	
 	for (int i = 0; i < Graphics::ScreenHeight; i++) {
 		for (int j = 0; j < rowNum; j++) {
 			gfx.PutPixel(j * Cell::width, i, 255, 255, 255);
