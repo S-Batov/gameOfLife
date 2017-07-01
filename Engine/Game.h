@@ -52,6 +52,6 @@ private:
 public:
 	static constexpr int rowNum = int(Graphics::ScreenHeight / Cell::height);
 	static constexpr int colNum = int(Graphics::ScreenWidth / Cell::width);
-	Cell cells[rowNum][colNum];
+	static Cell cells[rowNum][colNum];
 
 };

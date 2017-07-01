@@ -22,6 +22,9 @@
 #include "Game.h"
 #include "Cell.h"
 
+
+Cell Game::cells[rowNum][colNum];
+
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
@@ -40,6 +43,11 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	for (int i = 0; i < rowNum; i++) {
+		for (int j = 0; j < colNum; j++) {
+			cells[j][i].show(j, i, gfx);
+		}
+	}
 }
 
 

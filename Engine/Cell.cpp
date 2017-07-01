@@ -3,9 +3,12 @@
 
 void Cell::show(int x, int y, Graphics& gfx)
 {
-	for (int i = 0; i < Game::rowNum; i++) {
-		for (int j = 0; j < Game::colNum; j++) {
-			if (Game::cells[i][j].populated);
-		}
+	if (Game::cells[x][y].populated) {
+		for (int i = 0; i < Cell::height; i++) {
+			for (int j = 0; j < Cell::width; j++) {
+				gfx.PutPixel(x * Cell::width + j, y * Cell::height + i, 0, 0, 200);
+			}
+		}	
 	}
+
 }
