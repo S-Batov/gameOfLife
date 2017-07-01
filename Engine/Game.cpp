@@ -20,10 +20,11 @@ void Game::Go() {
 }
 
 void Game::UpdateModel() {
-	showcells();
+	populate();
 }
 
 void Game::ComposeFrame() {
+	showcells();
 	drawGrid();
 }
 
@@ -53,10 +54,24 @@ void Game::drawGrid() {
 	}
 }
 
-void Game::showcells(){
+void Game::showcells() {
 	for (int i = 0; i < rowNum; i++) {
 		for (int j = 0; j < colNum; j++) {
 			cells[j][i].show(j, i, gfx);
 		}
+	}
+}
+
+void Game::populate()
+{
+	if (!populationDone) {
+		for (int i = 0; i < rowNum; i++) {
+			for (int j = 0; j < colNum; j++) {
+				cells[j][i].populate(wnd);
+			}
+		}
+	}
+	if ( wnd.mouse.RightIsPressed() ){
+		populationDone = true;
 	}
 }

@@ -12,3 +12,15 @@ void Cell::show(int x, int y, Graphics& gfx)
 	}
 
 }
+
+void Cell::populate(MainWindow& wnd)
+{
+	if (wnd.mouse.LeftIsPressed()) {
+		int x = wnd.mouse.GetPosX() / Game::colNum;
+		int y = wnd.mouse.GetPosY() / Game::rowNum;
+
+		if (!Game::cells[x][y].populated) {
+			Game::cells[x][y].populated = true;
+		}
+	}
+}

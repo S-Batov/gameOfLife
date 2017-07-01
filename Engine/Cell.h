@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Graphics.h"
+#include "MainWindow.h"
 
 class Cell {
 public:
@@ -13,4 +15,5 @@ public:
 
 public:
 	void show(int x, int y,	Graphics& gfx);
+	void populate(MainWindow& wnd);
 };

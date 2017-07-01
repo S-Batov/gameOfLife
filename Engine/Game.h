@@ -23,6 +23,7 @@ private:
 	void init();
 	void drawGrid();
 	void showcells();
+	void populate();
 
 private:
 	MainWindow& wnd;
@@ -30,9 +31,11 @@ private:
 	/********************************/
 	/*  User Variables              */
 	/********************************/
+
+	bool populationDone = false;
+
 public:
 	static constexpr int rowNum = int(Graphics::ScreenHeight / Cell::height);
 	static constexpr int colNum = int(Graphics::ScreenWidth / Cell::width);
 	static Cell cells[rowNum][colNum];
-
 };
