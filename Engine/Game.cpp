@@ -5,11 +5,13 @@
 
 
 Cell Game::cells[rowNum][colNum];
+int Game::cellNeighbourCount[rowNum][colNum] = { 0 };
 
 Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
-	gfx(wnd) {
+	gfx(wnd) 
+{
 	init();
 }
 void Game::Go() {
@@ -21,6 +23,17 @@ void Game::Go() {
 
 void Game::UpdateModel() {
 	populate();
+	for (int i = 0; i < rowNum; i++) {
+		for (int j = 0; j < colNum; j++) {
+			cellNeighbourCount[i][j] = 0;
+		}
+	}
+
+	for (int i = 0; i < rowNum; i++) {
+		for (int j = 0; j < colNum; j++) {
+			cells[i][j].checkNeighbours(j, i);
+		}
+	}
 }
 
 void Game::ComposeFrame() {
@@ -48,7 +61,7 @@ void Game::drawGrid() {
 		}
 	}
 	for (int i = 0; i < Graphics::ScreenHeight; i++) {
-		for (int j = 0; j < rowNum; j++) {
+		for (int j = 0; j < colNum; j++) {
 			gfx.PutPixel(j * Cell::width, i, 255, 255, 255);
 		}
 	}
@@ -57,7 +70,7 @@ void Game::drawGrid() {
 void Game::showcells() {
 	for (int i = 0; i < rowNum; i++) {
 		for (int j = 0; j < colNum; j++) {
-			cells[j][i].show(j, i, gfx);
+			cells[i][j].show(j, i, gfx);
 		}
 	}
 }
@@ -67,7 +80,7 @@ void Game::populate()
 	if (!populationDone) {
 		for (int i = 0; i < rowNum; i++) {
 			for (int j = 0; j < colNum; j++) {
-				cells[j][i].populate(wnd);
+				cells[i][j].populate(wnd);
 			}
 		}
 	}

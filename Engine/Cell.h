@@ -16,4 +16,5 @@ public:
 public:
 	void show(int x, int y,	Graphics& gfx);
 	void populate(MainWindow& wnd);
+	void checkNeighbours(int x, int y);
 };

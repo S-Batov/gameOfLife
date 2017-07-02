@@ -35,7 +35,8 @@ private:
 	bool populationDone = false;
 
 public:
-	static constexpr int rowNum = int(Graphics::ScreenHeight / Cell::height);
-	static constexpr int colNum = int(Graphics::ScreenWidth / Cell::width);
+	static constexpr int rowNum = Graphics::ScreenHeight / Cell::height;
+	static constexpr int colNum = Graphics::ScreenWidth / Cell::width;
 	static Cell cells[rowNum][colNum];
+	static int cellNeighbourCount[rowNum][colNum];
 };
