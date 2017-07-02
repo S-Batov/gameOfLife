@@ -33,6 +33,7 @@ private:
 	/********************************/
 
 	bool populationDone = false;
+	int timer = 0;
 
 public:
 	static constexpr int rowNum = Graphics::ScreenHeight / Cell::height;

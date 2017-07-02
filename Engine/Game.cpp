@@ -23,13 +23,13 @@ void Game::Go() {
 
 void Game::UpdateModel() {
 	populate();
-
 	// R E S E T
 	for (int i = 0; i < rowNum; i++) {
 		for (int j = 0; j < colNum; j++) {
 			cellNeighbourCount[i][j] = 0;
 		}
 	}
+
 	// C H E C K  N E I G H B O U R S
 	if (populationDone) {
 		for (int i = 0; i < rowNum; i++) {
@@ -37,6 +37,20 @@ void Game::UpdateModel() {
 				cells[i][j].checkNeighbours(j, i);
 			}
 		}
+	}
+	if (timer == 30) {
+		// E V O L V E
+		if (populationDone) {
+			for (int i = 0; i < rowNum; i++) {
+				for (int j = 0; j < colNum; j++) {
+					cells[i][j].evolve(j, i);
+				}
+			}
+		}
+	}
+	timer++;
+	if (timer > 30) {
+		timer = 0;
 	}
 }
 
