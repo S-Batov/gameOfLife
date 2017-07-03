@@ -1,7 +1,7 @@
 #include "MainWindow.h" 
 #include "Game.h" 
 #include "Cell.h" 
-
+#include <chrono>
 
 
 Cell Game::cells[rowNum][colNum];
@@ -22,6 +22,9 @@ void Game::Go() {
 }
 
 void Game::UpdateModel() {
+	float dt = ft.mark();
+	time += dt;
+
 	populate();
 	// R E S E T
 	for (int i = 0; i < rowNum; i++) {
@@ -38,7 +41,10 @@ void Game::UpdateModel() {
 			}
 		}
 	}
-	if (timer == 30) {
+
+	if (time - 0.75 > 0) {
+		time -= 0.75;
+
 		// E V O L V E
 		if (populationDone) {
 			for (int i = 0; i < rowNum; i++) {
@@ -47,10 +53,6 @@ void Game::UpdateModel() {
 				}
 			}
 		}
-	}
-	timer++;
-	if (timer > 30) {
-		timer = 0;
 	}
 }
 
@@ -75,12 +77,12 @@ void Game::intialiseCells(int x, int y) {
 void Game::drawGrid() {
 	for (int i = 0; i < rowNum; i++) {
 		for (int j = 0; j < Graphics::ScreenWidth; j++) {
-			gfx.PutPixel(j, i * Cell::height, 255, 255, 255);
+			gfx.PutPixel(j, i * Cell::height, 128, 128, 128);
 		}
 	}
 	for (int i = 0; i < Graphics::ScreenHeight; i++) {
 		for (int j = 0; j < colNum; j++) {
-			gfx.PutPixel(j * Cell::width, i, 255, 255, 255);
+			gfx.PutPixel(j * Cell::width, i, 128, 128, 128);
 		}
 	}
 }

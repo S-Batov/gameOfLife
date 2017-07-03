@@ -4,6 +4,7 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Cell.h"
+#include "FrameTimer.h"
 
 class Game
 {
@@ -32,8 +33,10 @@ private:
 	/*  User Variables              */
 	/********************************/
 
+	FrameTimer ft;
+	float time = 0;
+
 	bool populationDone = false;
-	int timer = 0;
 
 public:
 	static constexpr int rowNum = Graphics::ScreenHeight / Cell::height;
